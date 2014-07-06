@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营——DIY你的装备吧</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    
+    <link rel="icon" href="../static/image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="../static/css/flick/jquery-ui-1.10.4.custom.css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <link rel="stylesheet" href="../static/validity/jquery.validity.css">
+    
+  	<script src="../static/js/jquery-1.10.2.js"></script>
+  	<script src="../static/validity/jquery.validity.js"></script>
+    
+	<script src="../static/js/jquery-ui-1.10.4.custom.js"></script>
+   
+ 	<script>
+	
+	
+		$(function() {
+    		$( ".datepicker" ).datepicker();
+  		});
+		
+		function add(i,n)
+		{
+			current = r[i].num;
+			current ++;
+			$("#"+i+" input").val(current);
+			updateAlreadyNumber(i,n);
+		}
+		function minus(i,n)
+		{
+			current = r[i].num;
+			if( current > 0 )
+			{
+				current --;
+				
+			}
+			$("#"+i+" input").val(current);
+			updateAlreadyNumber(i,n);
+		}
+		
+		function updateAlreadyNumber(i,n)
+		{
+			past = r[i].num;
+			current = parseInt($("#"+i+" input").val());
+			r[i].num = current;
+			alreadyNumber += ( current - past ) * n;
+			$("#already-number").text(alreadyNumber);
+			$("#suggestion-number").text(needNumber-alreadyNumber);
+			if( (needNumber-alreadyNumber) <= 0) 
+			{
+				$("#suggestion").css("display","none");
+				$("#congratulation").css("display","block");
+			}
+		}
+	</script>
+  
+	<link rel="stylesheet" href="../static/css/equipment.css" type="text/css">
+    
+	<script type="text/javascript" src="../static/js/equipment.js"></script> 
+    <script type="text/javascript" src="../static/js/equipment.ajax.validity.js"></script>
+    <script type="text/javascript" src="../static/js/equipment.data.js"></script>
+    
+    <script type="text/javascript">
+		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		var isLeaving = 0;
+		
+		
+	</script>
+</head>
+
+<body onbeforeunload="if( isLeaving == 0 ) return '离开本页面将会失去您的预订记录哦!';">
+
+<form  name=basic-form-name id='check-form' method=post >
+<div id="background">
+    <img id="background-img" src="../static/image/equipment.jpg">
+    
+    <img id="boy" src="../static/image/boy/boy_origin.png">
+    
+    <a onclick="window.location.href = $SCRIPT_ROOT + '/';"><div id="logo">
+        	<img src="../static/image/logo.png">
+            
+    </div></a>
+    
+    <div id="basic-info">
+    	<div class="float-left">
+        	<a onclick="window.location.href = $SCRIPT_ROOT + '/';"><p><<<<返回主页<br/></p></a><br/>
+        	<p id="basic-info-title">基本信息</p><a onclick="window.location.href = $SCRIPT_ROOT + '/_equipment';"><p id="reset-all">重置</p></a>
+        </div>
+        <div id="basic-form" >
+        
+        	<table style="top:20px;">
+            	<tbody>
+            	<tr>
+                	<td>出发时间</td>
+                    <td class="col1" id="depart-date"><input name=departDate type="text" class="datepicker"></td>
+                </tr>
+                <tr>
+                	<td>归还时间</td>
+                    <td class="col1" id="return-date"><input name=returnDate type="text" class="datepicker"></td><!-- 有空写一个禁用前面的 -->
+                </tr>
+                <tr> 
+                	<td>露营人数</td><!-- 有空写一个人数？ -->
+                    <td class="col1" id="camping-people"><input name=campingPeople type="text"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="begin-order">
+        	<a><div id="diy-button" class="button">
+                <p>开始DIY定制方案！</p>
+            </div></a>
+            <p id="do-not-worry">不想操心？试试——</p>
+            <a><div id="one-key-button" class="button">
+                <p>一键预定套餐！</p>
+            </div></a>
+        </div>
+        <div id="diy-bag">
+        	<table>
+            	<tr id="bag-head"><td>装备篮子：</td></tr>
+                <tr id='bag-tent' style='display:none'><td>帐篷：</td><td>0</td><td>个</td></tr>
+                <tr id='bag-pad' style='display:none'><td>防潮垫：</td><td>0</td><td>个</td></tr>
+                <tr id='bag-sleepingbag' style='display:none'><td>睡袋：</td><td>0</td><td>个</td></tr>
+                <tr id='bag-light' style='display:none'><td>帐篷灯：</td><td>0</td><td>个</td></tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="notice-arrow" id="notice-arrow1">
+    	<img src="../static/image/arrow.png">
+    </div>
+    <div id="notice-step0" class="notice">
+    	<p style="font-size:16px;color:#06F">第一步：</p>
+        <p style="color:#999">填写基本信息</p>
+        <p>填写出发时间、返回时间、人数</p>
+    </div>
+    
+    <div class="notice-arrow" id="notice-arrow0">
+    	<img src="../static/image/arrow.png">
+    </div>
+    <div id="notice-step1" class="notice">
+    	<p style="font-size:16px;color:#06F">第二步:</p>
+        <p style="color:#999">选择定制方式</p>
+        <p style="color:#09F">选择一：DIY</p>
+        <p>你可以自行选择装备的类目和数量</p>
+        <p style="color:#09F">选择二：一键定制</p>
+        <p>不知道选哪些装备不用担心，易露营会根据人数为您搭配好装备</p>
+    </div>
+    
+    
+    
+    <div id="combo">
+    	<div>
+        	<p>露营套餐20元/人</p>
+            <p>包括：</p>
+            <p>帐篷（2~8人住一只，视人数而定）</p>
+            <p>防潮垫</p>
+            <p>睡袋（每人一只）</p>
+            <p>帐篷灯</p>
+        </div>
+    	<div id="combo-bottom">
+            <table>
+            	<tr>
+                	<td>
+                    	<div id="reset">
+            				<a href="equipment.html"><p>返回</p></a>
+            			</div>
+                    </td>
+                    <td><!--
+                    	<a href="destination.html"><div class="button" id="next-destination">
+        					<p>下一步，选择露营地点！</p>
+        				</div></a>-->
+                    </td>
+                </tr>
+            </table>
+            
+        	
+        </div>
+    </div>
+    
+    <div id="item-detail">
+    	<div id="step0-tent">
+        	<table>
+            	<tr id="tent2">
+                	<td><img src="../static/image/equipment/tent.png"></td>
+                    <td class="item-name"><ul><li>双人帐篷</li><li> {{ equipments[0].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('tent2',2);">-</td>
+                    <td><input name=tent2 type='text' value="0" onChange="updateAlreadyNumber('tent2',2);"></td>
+                    <td class="add" onclick="add('tent2',2);">+</td>
+                </tr>
+                <tr id="tent4">
+                	<td><img src="../static/image/equipment/tent4.png"></td>
+                    <td class="item-name"><ul><li>四人帐篷</li><li>{{ equipments[1].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('tent4',4)">-</td>
+                    <td><input name=tent4 type='text' value="0" onChange="updateAlreadyNumber('tent4',4);"></td>
+                    <td class="add" onClick="add('tent4',4)">+</td>
+                </tr>
+                <tr id="tent8">
+                	<td><img src="../static/image/equipment/tent8.png"></td>
+                    <td class="item-name"><ul><li>八人帐篷</li><li>{{ equipments[2].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('tent8',8)">-</td>
+                    <td><input name=tent8 type='text' value="0" onChange="updateAlreadyNumber('tent8',8);"></td>
+                    <td class="add" onClick="add('tent8',8)">+</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="step1-pad">
+        	<table>
+            	<tr id="pad">
+                	<td><img src="../static/image/equipment/pad.png"></td>
+                    <td class="item-name"><ul><li>防潮垫</li><li>{{ equipments[3].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('pad',1)">-</td>
+                    <td><input name=pad placeholder="0" value="0" onChange="updateAlreadyNumber('pad',1);"></td>
+                    <td class="add" onClick="add('pad',1)">+</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="step2-sleepingbag">
+        	<table>
+            	<tr id="sleepingbag">
+                	<td><img src="../static/image/equipment/sleepingbag.png"></td>
+                    <td class="item-name"><ul><li>睡袋</li><li>{{ equipments[4].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('sleepingbag',1)">-</td>
+                    <td><input name=sleepingbag placeholder="0" value="0" onChange="updateAlreadyNumber('sleepingbag',1);"></td>
+                    <td class="add" onClick="add('sleepingbag',1)">+</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="step3-light">
+        	<table>
+            	<tr id="light">
+                	<td><img src="../static/image/equipment/light.png"></td>
+                    <td class="item-name"><ul><li>帐篷灯</li><li>{{ equipments[5].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('light',1)">-</td>
+                    <td><input name=light placeholder="0" value="0" onChange="updateAlreadyNumber('light',1);"></td>
+                    <td class="add" onClick="add('light',1)">+</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="step4-backbag">
+        	<table>
+            	<tr id="backbag">
+                	<td><img src="../static/image/equipment/backbag.png"></td>
+                    <td class="item-name"><ul><li>登山包</li><li>{{ equipments[6].price }}元/个</li></ul></td>
+                    <td class="minus" onClick="minus('backbag',1)">-</td>
+                    <td><input name=backbag placeholder="0" value="0" onChange="updateAlreadyNumber('backbag',1);"></td>
+                    <td class="add" onClick="add('backbag',1)">+</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div id="item-bottom">
+        	<div id="line"></div>
+        	<div class="float-left20" id="already">
+        		<p id="already-class">帐篷</p><p>可满足</p><p id="object-class">人</p><p>数:</p><p id="already-number">0</p><p>人</p>
+        	</div>
+            <!--
+            <div class="float-left20" id="suggestion">
+        		<p>小易提醒：可能还有</p><p id="suggestion-number">0</p><p id="suggestion-object">人无家可归哦~</p>
+        	</div>
+            <div id="congratulation">
+            	<p>恭喜！数量也许够了~</p>
+            </div>-->
+            <table id="buttons">
+            	<tr>
+                	<td id="skip-step-button" style="width:130px">
+                    	
+            				<a><p style="line-height:50px;vertical-align:bottom;">返回修改上一项</p></a>
+            			
+                    </td>
+                    <td>
+                    	<a><div class="button" id="next-step-button">
+        					<p>下一步，预定防潮垫！</p>
+        				</div></a>
+                    </td>
+                </tr>
+            </table>
+            
+        	
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+
+</form>
+
+</body>
+</html>

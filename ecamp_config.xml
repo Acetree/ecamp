@@ -1,0 +1,17 @@
+<uwsgi>
+
+     <pythonpath>/var/www/ecamp</pythonpath>
+
+     <module>run</module>
+
+     <callable>app</callable>
+
+     <socket>/var/www/uwsgi.sock</socket>     
+
+     <master/>
+     <chmod-socket>666</chmod-socket>
+     <plugins>python</plugins>
+     <processes>4</processes>                
+     <memory-report/>
+
+</uwsgi>

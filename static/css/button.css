@@ -1,0 +1,16 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+#diy-button{background:url(../image/button.png);width:160px;height:38px;line-height:38px;}
+
+.button{text-align:center;vertical-align:middle;margin-top:10px;margin-bottom:10px;}
+.button p{color:#FFF;font-size:16px;}
+#yes-button{margin:auto;background:url(../image/buttonBig.png);width:240px;height:57px;line-height:57px;}
+#diy-button-big{background:url(../image/buttonBig.png);width:240px;height:57px;}
+#diy-button-big p{line-height:57px;}
+#no-button{margin:auto;width:160px;height:38px;line-height:38px;margin-top:10px;}
+#one-key-button{background:url(../image/buttonGreen.png);width:160px;height:38px;}
+
+#no-button p{color:#0CF;font-size:14px}
+#no-button p:hover{color:yellow;text-decoration:underline}

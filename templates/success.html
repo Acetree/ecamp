@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!--
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    -->
+	<link rel="stylesheet" href="../static/css/success.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../static/js/success.js"></script> 
+    
+    <script type=text/javascript>
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+
+</head>
+
+<body>
+<div>
+
+
+	<div id="header-background">
+    	
+    </div>
+    
+    <div id="header-container">
+    	
+        
+        
+        <div id="logo-color">
+        	<img src="../static/image/logo-color.png">
+        </div>
+        
+        <div id="order">
+        	<p>订单提交成功，您的订单号码是:{{ o_id }}</p>
+			<p>客服GG会在3小时内联系您确认订单</p>
+			<p>如有疑问请咨询：188-8888-8888</p>
+            <br/><br/>
+            <p>您可以：</p>
+        </div>
+        <a><div id="diy-button-big" class="button">
+                <p>回到首页查看露营小贴士</p>
+        </div></a>
+        
+        
+       
+    </div>
+</div>
+
+</body>
+</html>

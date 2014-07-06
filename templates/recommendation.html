@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!--
+    <link rel="icon" href="image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    -->
+	<link rel="stylesheet" href="../static/css/recommendation.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../static/js/recommendation.js"></script>
+
+  	<script type=text/javascript>
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		
+	</script>
+</head>
+
+<body>
+<div>
+	
+    
+	
+
+	<div id="header-background">
+    	<img src="../static/image/destination/{{ name }}.jpg">
+    </div>
+    
+    <div id="header-container">
+    	<a onclick="window.location.href = $SCRIPT_ROOT + '/';"><div id="logo">
+        	<img src="../static/image/logo.png">
+        </div></a>
+        <div id="back-to-index">
+        	<a onclick="window.location.href = $SCRIPT_ROOT + '/';"><p><<返回主页</p></a>
+        </div>
+
+        
+        <div id="choose-destination">
+        	<ul>
+            	<a onclick="window.location.href = $SCRIPT_ROOT + '/_recommendation/13sentence';"><li>毕业了，给班长的13句话</li></a>
+            	<a onclick="window.location.href = $SCRIPT_ROOT + '/_recommendation/gqd';"><li>枸杞岛</li></a>
+                <a onclick="window.location.href = $SCRIPT_ROOT + '/_recommendation/la';"><li>临安</li></a>
+                <a onclick="window.location.href = $SCRIPT_ROOT + '/_recommendation/nzj';"><li>鸟之家</li></a>
+                <a onclick="window.location.href = $SCRIPT_ROOT + '/_recommendation/qdh';"><li>千岛湖</li></a>
+            </ul>
+        </div>
+        
+        <div id="destination-detail">
+        	<div id='maintitle'>{% block title %}{% endblock %}</div>
+        	<div id="mainpost" >{% block post %}{% endblock %}</div>
+            <a onclick="window.location.href = $SCRIPT_ROOT + '/_equipment';"><div id="diy-button-big" class="button">
+                <p>感兴趣？现在就去定制露营吧！</p>
+        	</div></a>
+        </div>
+    
+    </div>
+</div>
+
+</body>
+</html>

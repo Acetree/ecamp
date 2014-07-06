@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营--让露营变得如此简单</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    
+    <link rel="icon" href="../static/image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+    
+	<link rel="stylesheet" href="../static/css/index.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../static/js/index.js"></script> 
+    <script type="text/javascript" src="../static/js/jquery.preload.js"></script> 
+    <script type=text/javascript>
+            var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+    
+    <script type=text/javascript>
+		$.preload(
+    		'../static/image/index-header/header0.jpg',
+    		'../static/image/index-header/header1.jpg',
+			'../static/image/index-header/header2.jpg',
+			'../static/image/index-header/header3.jpg',
+			'../static/image/index-header/header4.jpg',
+			'../static/image/index-header/header5.jpg'
+  		);
+
+
+	</script>
+    
+    
+    <script type=text/javascript>
+		var TOTALHEADER = 6;
+		var current = 0;
+		var next;
+		function headerToggle(){
+			//var current;
+			next = (current+1) % TOTALHEADER;
+			
+			$("#header-background img").fadeOut(1500,function(){
+				$("#header-background img").attr("src","../static/image/index-header/header"+next+".jpg");
+			});
+			$("#header-background img").fadeIn(1500,function(){
+				current ++;
+			});
+		}
+	</script>
+</head>
+
+<body>
+<div>
+	<div id="header-background">
+    	<div style="background:rgba(255,255,255,0.7);width:100%;height:120px;"></div>
+    	<img src="../static/image/index-header/header0.jpg">
+    </div>
+    
+    <div id="header-container">
+    	<div id="logo">
+        	<img src="../static/image/logo.png">
+        </div>
+        
+    	<div id="header-nav">
+			<ul>
+    			<li><a onClick="window.location.href = $SCRIPT_ROOT + '/_equipment';">露营设备租赁</a></li>
+        		<li>|</li>
+				<li><a id="li-new-info">产品介绍</a></li>
+        		<li>|</li>
+        		<li><a id="li-destination">露营地推荐</a></li> 
+        		<li>|</li>
+        		<li><a id="li-tip">露营小贴士</a></li> 
+        		<li>|</li>  
+        		<li><a onClick="window.location.href = $SCRIPT_ROOT + '/_group';">团队定制</a></li> 
+                <li>|</li>
+                <li><a id="li-about">关于我们</a></li> 
+                  
+    		</ul>
+            <p id='slogan2' style="float:right;padding-top:20px;font-size:16px;color:#0C9;">让露营变得如此简单。</p>
+		</div>
+        
+    	<div id="go-button">
+        	<a onClick="window.location.href = $SCRIPT_ROOT + '/_equipment';"><img src="../static/image/go-button.png"></a>
+		</div>
+    
+    </div>
+</div>
+
+
+    
+<div id="destination" class="body-block" style="background-color:#FFF;margin-top:100px;">
+	<div class="body-container" style="height:500px;">
+    	<div class="body-title">
+        	<p style="color:#0FC">产品介绍</p>
+        </div>
+        <div class="line"></div>
+        <div class="body-content">
+        	<div id="table-product">
+            	<ul>
+                	<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_product';"><div>
+                			<div class="round"><img src="../static/image/product/product0.png"></div>
+                			<p class="product-title">露营设备介绍</p>
+            			</div></a>
+                    </li>
+            		<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_recommendation/13sentence';"><div>
+                			<div class="round"><img src="../static/image/product/product1.jpg"></div>
+                			<p class="product-title">自由行套餐</p>
+            			</div></a>
+                    </li>
+                    
+            		
+            </div>
+        </div>
+    </div>
+</div>    
+
+<div id="new-info" class="body-block"  style="background-color:#00C;">
+	<div class="body-container">
+    	<div class="body-title">
+        	<p style="color:#FFF">露营地推荐</p>
+        </div>
+        <div class="line"></div>
+        <div class="body-content">
+        	<div id="table-recommendation">
+            	<ul>
+                	<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_recommendation/13sentence';"><div>
+                			<div class="round"><img src="../static/image/destination/13sentence.jpg"></div>
+                			<p class="recommendation-title">毕业了，给班长的13句话</p>
+            			</div></a>
+                    </li>
+                	<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_recommendation/gqd';"><div>
+                			<div class="round"><img src="../static/image/destination/gqd.jpg"></div>
+                			<p class="recommendation-title">枸杞岛</p>
+            			</div></a>
+                    </li>
+            		<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_recommendation/la';"><div>
+                			<div class="round"><img src="../static/image/destination/la.jpg"></div>
+                			<p class="recommendation-title">临安</p>
+            			</div></a>
+                    </li>
+                    <li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_recommendation/nzj';"><div>
+                			<div class="round"><img src="../static/image/destination/nzj.jpg"></div>
+                			<p class="recommendation-title">鸟之家</p>
+            			</div></a>
+                    </li>
+                
+                	<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_recommendation/qdh';"><div>
+                			<div class="round"><img src="../static/image/destination/qdh.jpg"></div>
+                			<p class="recommendation-title">千岛湖</p>
+            			</div></a>
+                    </li>
+            		
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    
+
+
+
+<div id="tip" class="body-block" style="background-color:#000">
+	<div class="body-container">
+    	<div class="body-title">
+        	<p style="color:#0FF">露营小贴士</p>
+        </div>
+        <div class="line"></div>
+        <div class="body-content">
+        	<div id="table-tip">
+            	<ul>
+                	<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_tip/intro';"><div>
+                			<div class="round"><img src="../static/image/tip/tip0.jpg"></div>
+                			<p class="tip-title">露营简介</p>
+            			</div></a>
+                    </li>
+            		<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_tip/around';"><div>
+                			<div class="round"><img src="../static/image/tip/tip1.jpg"></div>
+                			<p class="tip-title">杭州周边露营</p>
+            			</div></a>
+                    </li>
+                    <li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_tip/howtochoose';"><div>
+                			<div class="round"><img src="../static/image/tip/tip2.jpg"></div>
+                			<p class="tip-title">如何选择营地</p>
+            			</div></a>
+                    </li>
+                	<li>
+                    	<a onClick="window.location.href = $SCRIPT_ROOT + '/_tip/equip';"><div>
+                			<div class="round"><img src="../static/image/tip/tip3.jpg"></div>
+                			<p class="tip-title">如何选择装备</p>
+            			</div></a>
+                    </li>
+            		
+            </div>
+        	
+            
+            
+        </div>
+    </div>
+    
+</div>
+
+
+<div id="about-us" class="body-block"  style="background-color:rgb(83,202,176)">
+	<div class="body-container">
+    	<div class="body-title">
+        	<p style="color:#00F">关于我们</p>
+        </div>
+        <div class="line"></div>
+        <div class="body-content" style="width:700px;line-height:22px;text-indent:2em;position:relative;z-index:20;margin:auto;">
+    		<p>易露营，原名浙大蜗camp，成立于2013年3月，是几个ZJUers创立的一个野外露营服务平台。不喜欢沉闷的生活的你，和喜欢户外活动的我，你是否向往过凭借一顶帐篷露营野外，仰望满天星光，呼吸青草花香，坐看日出日落？！易露营提供全套露营设备，路线推荐，自由行套餐和个性化露营定制，只需要你的电话预定，我们提供全套服务。</p>
+            <br/>
+            <br/>
+            
+       		<p>身在杭州这座美丽的旅游城市，我们坐拥最优越的自然美景，岂能辜负万千春光？也许你想露营，但是不知道准确的露营信息：露营能玩什么呢？露营能去哪里呢？露营该带什么设备呢？易露营为您提供最专业、最时新的露营信息，去哪里，看什么，怎么做，教你成为专业蜗牛客。
+</p>
+			<img src="../static/image/logo-color.png" style="margin-left:250px;margin-top:50px">
+            <p id="copyright" style="color:#9FF;text-align:center;padding-top:90px;font-family:Arial, Helvetica, sans-serif">Copyright © E-Camp 2014 ---- Designed & Developed by Shu Zhang</p>
+    	</div>
+    </div>
+</div>
+
+
+
+<div id="back-to-top">
+	<img src="../static/image/back-to-top.png">
+</div>
+
+</body>
+</html>

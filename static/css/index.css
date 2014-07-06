@@ -1,0 +1,54 @@
+@charset "UTF-8";
+/* CSS Document */
+/* Globle */
+ul,li{list-style:none;}
+body,html,h1,h2,h3,h4,p,ul,ol,li{ margin: 0; padding: 0; border: 0;font-family: Tahoma,Verdana,STHeiTi,simsun,sans-serif;font-size:13px;}
+a{text-decoration:none;cursor:pointer;}
+/*p{text-indent:2em}*/
+
+
+/* header */
+ul li{float:left;padding-left:10px;padding-right:10px;}
+#header-background img{width:100%;height:100%;}
+#header-background{position:absolute;z-index:1;}
+#header-container{width:960px;position:relative;z-index:2;margin:auto;}
+#logo{position:absolute;z-index:3;top:20px;left:20px;}
+#slogan{width:360px;height:60px;position:absolute;z-index:4;right:20px;}
+#slogan li{font-size:46px;color:#FFF;float:right;position:relative}
+
+#header-nav{position:absolute;top:20px;right:20px;float:right;color:#000}
+#header-nav a{color:#000;font-size:14px}
+#header-nav a:hover{text-decoration:underline;color:#0C9}
+#go-button{position:absolute;right:20px;z-index:6}
+
+
+/* body */
+.body-container{width:960px;position:relative;z-index:20;margin:auto;padding-bottom:100px;padding-top:50px}
+.body-title{text-align:center;padding-bottom:20px}
+.body-title p{font-size:18px;}
+.body-content{margin-top:50px;width:100%}
+.body-block{width:100%;padding-top:50px}
+
+#table-recommendation, #table-tip, #table-product{padding-left:20px;height:700px}
+#table-recommendation li, #table-tip li, #table-product li{width:250px;text-align:center;padding:30px 30px 30px 30px}
+
+.recommendation-title{font-size:14px;padding-top:20px;color:#CFF;font-size:16px;}
+.tip-title{font-size:14px;padding-top:20px;color:#FFF;font-size:16px;}
+.product-title{font-size:14px;padding-top:20px;color:#000;font-size:16px;}
+
+#r-list{width:200px;position:absolute;left:80px;}
+#r-list li{float:none;color:#000;line-height:30px;font-size:14px}
+#r-list li a:hover{color:#0FC}
+#r-picture{position:absolute;top:150px;left:300px;height:300px;width:500px;background:rgba(153,255,255,0.5);text-overflow:ellipsis;overflow:hidden;padding:30px 30px 30px 30px}
+#r-picture p{line-height:22px;text-indent:2em;margin:auto;magin-bottom:15px;color:#003}
+.line{background:#999;height:0px;width:500px;margin-bottom:20px;margin-left:220px}
+
+/* footer */
+#footer-container{width:960px;position:relative;z-index:20;margin:auto;margin-bottom:50px}
+
+
+
+#back-to-top{position:fixed;bottom:60px;right:50px;cursor:pointer;}
+
+.round{height:250px;width:250px;-moz-border-radius:125px;-khtml-border-radius:125px;-webkit-border-radius:125px;border-radius:125px;text-overflow:ellipsis;overflow:hidden;}
+.round img{height:100%;}

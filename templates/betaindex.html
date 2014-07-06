@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>敬请期待易露营Beta版</title>
+
+	
+	<link rel="stylesheet" type="text/css" href="../static/css/betaindex.css" />
+
+</head>
+<body>
+
+<div class="container">
+
+	<!-- top-bar -->
+	
+	<!-- end top-bar -->
+
+	<!-- header -->
+    <form action="{{ url_for('add_email')}}" method="post">
+	<div class="header">
+    	<div class="top-bar" id="product">
+			<div id="logo"><img src="../static/image/logo.png"></div>
+			<div id="slogan">
+			让露营变得如此简单
+			</div>
+            <div id="tel"><p>预定 / 咨询电话：1570 - 0173 - 866</p></div>
+		</div>
+        <div id="feature">
+		<ul>
+        	<li>露营定制</li>
+            <li>自由行套餐</li>
+            <li>团队定制</li>
+        </ul>
+        </div>
+        <div id="telandemail">
+        
+        <div id="email">
+        	<ul>
+        		<li>线上订购网站努力内测中，</li>
+                <li>想要第一时间得到易露营网站发布信息？</li>
+                <li>请留下您的电子邮箱：</li>
+            	<li><input name=email type="text" class="email" placeholder="yourname@domain.com"></li>
+            	<li><input type="submit" value="提交" id="submit"></li>
+            </ul>
+        </div>
+		</div>
+		
+	</div>
+    </form>
+	<!-- end header -->
+
+</body>
+</html>

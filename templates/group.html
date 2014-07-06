@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营--试试小易的团队定制服务吧！</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+ 
+    <link rel="icon" href="../static/image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+    
+	<link rel="stylesheet" href="../static/css/group.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <link rel="stylesheet" href="../static/validity/jquery.validity.css">
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+    <script src="../static/js/jquery-ui-1.10.4.custom.js"></script>
+	<script type="text/javascript" src="../static/js/group.js"></script> 
+    <script type="text/javascript" src="../static/js/group.ajax.validity.js"></script> 
+    <script src="../static/validity/jquery.validity.js"></script> 
+    <script type=text/javascript>
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+	</script>
+    
+</head>
+
+<body>
+<div>
+
+
+	<div id="header-background">
+    	<img src="../static/image/group.jpg">
+    </div>
+    
+    <div id="header-container">
+    	<div id="logo">
+        	<img src="../static/image/logo.png">
+        </div>
+        
+      
+        
+   <form name="contact_info" action="{{ url_for('add_group')}}" method="post">
+        
+        <div id="personal-info">
+        	<p id="group-intro">易露营为30人以上团队提供露营全套服务定制，如有需求，请留下您的联系方式，我们将尽快与您联系。</p>
+        	<table id="car-basic-info">
+            	<thead><td>联系方式</td></thead>
+            	<tr><td>姓名</td><td><input name="name"></td></tr>
+                <tr><td>手机号码</td><td><input name="tel"></td></tr>
+                <tr><td>Email</td><td><input name="email"></td></tr>
+            </table>
+            
+            <table>
+            	<thead><td>备注：</td></thead>
+            	<tr><td><textarea name="note2"></textarea></td></tr>
+            </table>
+        </div>
+        <div id="div-button">
+        	<div id="back-to-index">
+        		<a onclick="window.location.href = $SCRIPT_ROOT + '/';"><p>放弃团队定制，返回主页</p></a>
+        	</div>
+        	<a><div id="diy-button-big" class="button">
+                <p>提交，返回首页</p>
+        	</div></a>
+        </div>
+    </form>
+    
+    </div>
+</div>
+
+</body>
+</html>

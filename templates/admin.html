@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>admin</title>
+</head>
+
+<body>
+
+<form action="{{ url_for('admin_login')}}" method="post">
+	<p>username:</p>
+	<input name="username" type="text"/>
+    <p>password:</p>
+    <input name="password" type="text" />
+    <input name="submit" type="submit" value="submit"/>
+</form>
+
+</body>
+</html>

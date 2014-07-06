@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营--小易为你推荐了露营地哦~</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    
+    <link rel="icon" href="../static/image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+    
+	<link rel="stylesheet" href="../static/css/destination.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="../static/js/destination.js"></script>
+    <script type="text/javascript" src="../static/js/destination.data.js"></script> 
+    <script type="text/javascript" src="../static/js/jquery.preload.js"></script> 
+  	<script type=text/javascript>
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		var isLeaving = 0;
+	</script>
+    <script type=text/javascript>
+		$.preload(
+    		'../static/image/desination/nzj.jpg',
+    		'../static/image/desination/la.jpg',
+    		'../static/image/desination/qdh.jpg',
+    		'../static/image/desination/self.jpg',
+			'../static/image/desination/gqd.jpg'
+  		);
+
+
+</script>
+</head>
+
+<body onLoad="javascript:preloader()" onbeforeunload="if( isLeaving == 0 ) return '离开本页面将会失去您的预订记录哦!';">
+<div>
+	
+    
+	<div id="do-choose-bg">
+    	<div id="do-choose">
+        	<p class="question">小易精心挑选了几个目的地<br/><br/>供您选择，<br/><br/>是否需要预定门票呢？</p>
+           
+            <a><div class="button" id="yes-button"><p>去看看！</p></div></a>
+            <a><div class="button" id="no-button"><p>不用了>>>></p></div></a>
+        </div>
+    </div>
+
+	<div id="header-background">
+    	<img src="../static/image/destination/gqd.jpg">
+    </div>
+    
+    <div id="header-container">
+    	<div id="logo">
+        	<img src="../static/image/logo.png">
+        </div>
+        <div id="back-to-index">
+        	<a onclick="window.location.href = $SCRIPT_ROOT + '/';"><p><<放弃定制，返回主页</p></a>
+        </div>
+        
+        
+        
+        
+        
+        <div id="choose-destination">
+        	<table>
+            	<tr><td id="gqd"><span class="ticket">船票+烧烤</span><br/>枸杞岛（70元）</td></tr>
+                <tr><td id="qdh"><span class="ticket">烧烤+篝火</span><br/>千岛湖（50元）</td></tr>
+                <tr><td id="la"><span class="ticket">烧烤</span><br/>临安（30元）</td></tr>
+                <tr><td id="nzj"><span class="ticket">烧烤+篝火</span><br/>鸟之家（50元）</td></tr>
+                <tr><td id="self">我不需要套票了~</td></tr>
+                
+            </table>
+        </div>
+        
+        <div id="destination-detail">
+        	
+        	<div id='maintitle'>枸杞岛</div>
+        	<div id="mainpost" >
+            
+             <p>枸杞岛是嵊泗列岛中仅次于泗礁山的第二大岛。面积5.6平方公里。渔业为岛上的主要产业，岛上的旅游业也是近两年才发展起来的，基本还保持着原生态，另外由于上海出发每天只有一班船400多张票，所以岛上游客也不会太多。</p>
+            
+            </div>
+            
+            <a><div id="diy-button-big" class="button">
+                <p>可以选择露营套票哦~</p>
+        	</div></a>
+        </div>
+    
+    </div>
+</div>
+
+</body>
+</html>

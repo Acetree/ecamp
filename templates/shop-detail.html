@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+	<title>易露营--确认一下订购信息哦</title>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  
+    <link rel="icon" href="../static/image/favicon.ico" type="image/x-icon" charset="utf-8">
+	<link rel="shortcut icon" href="../static/image/favicon.ico" type="image/x-icon">
+    
+	<link rel="stylesheet" href="../static/css/shop-detail.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/button.css" type="text/css">
+    <link rel="stylesheet" href="../static/validity/jquery.validity.css">
+    <script type="text/javascript" src="../static/js/jquery-1.10.2.js"></script>
+    <script src="../static/js/jquery-ui-1.10.4.custom.js"></script>
+	<script type="text/javascript" src="../static/js/shop-detail.js"></script>
+    <script type="text/javascript" src="../static/js/shop-detail.ajax.validity.js"></script> 
+    <script src="../static/validity/jquery.validity.js"></script> 
+    <script>
+	function unNaN(q){q = isNaN(q)? 0:q;return q;}
+	
+	function updateInput(){
+		var newEquipmentTotal = 0;
+
+		$("#car-equipment tr").each(function(index, element) {
+			var p = parseInt($(this).children(".price").text());
+			var q = parseInt($(this).children(".price").next().next().next().children().val());
+			p = unNaN(p);
+			q = unNaN(q);
+			
+			$(this).children(".cost").text(p*q+"元");
+			
+            newEquipmentTotal += p*q;
+        });
+		$("#equipment-total").text(newEquipmentTotal);
+		$("#all-total").text(newEquipmentTotal+parseInt($("#destination-total").text())+insuranceTotal);
+	}
+	
+	</script>
+    
+    <script type=text/javascript>
+  		var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		
+		
+		
+		
+	</script>
+
+    
+</head>
+
+<body>
+<div>
+
+
+	<div id="header-background">
+    	<img src="../static/image/shop-detail.jpg">
+    </div>
+    
+    <div id="header-container">
+    	<div id="logo">
+        	<img src="../static/image/logo.png">
+        </div>
+        
+        
+        
+        <div id="shopping-car">
+        	<table id="car-basic-info">
+            	<thead><td>基本信息</td></thead>
+            	<tr><td class="item-name">出发时间</td><td class="price">{{ departDate }}</td></tr>
+                <tr><td class="item-name">返回时间</td><td class="price">{{ returnDate }}</td></tr>
+                <tr><td class="item-name">露营人数</td><td id="camp" class="price">{{ campingPeople }}人</td></tr>
+            </table>
+            <table id="car-equipment">
+            	<thead><td>装备信息</td></thead>
+                {% for e in equipments %}
+                <tr><td class="item-name">{{ e.chinese_name }}</td><td class="price">{{ e.price }}</td><td>元/个</td><td class="minus">-</td><td><input onChange="updateInput()" value="{{ e.quantity }}"></td><td class="add">+</td><td class="cost">{{ e.cost }}</td><td>元</td></tr>
+                {% endfor %}
+                <tfoot><td colspan="6">小计：</td><td id="equipment-total" class="cost">{{ equipmentTotal }}</td><td>元</td></tfoot>
+            </table>
+            <table id="car-destination">
+            	<thead><td>目的地</td><td><a id="change" href="../_go_to_choose_tickets">修改</a></td></thead>
+                {% for t in tickets %}
+                <tr><td class="item-name">{{ t.chinese_name }}</td><td class="price">{{ t.price }}</td><td>元/人</td><td style="padding-left:60px;padding-right:30px">{{ t.quantity }}人</td><td id="destination-total"  class="cost">{{ t.cost }}</td><td>元</td></tr>
+                {% endfor %}
+            </table>
+            
+            <table id="car-insurance">
+            	<thead><td>保险</td></thead>
+                <tr><td><input type="radio" name="insurance" value="1" checked="checked">为了安全，我要易露营为我代买保险。</td></tr>
+                <tr id="insurance-fee"><td style="padding-left:50px;color:#999">保险费5元/人哦，一共<span id="insurance-total">{{ insurance }}</span>元</td></tr>
+                <tr><td><input type="radio" name="insurance" value="0">我不需要保险。</td></tr>
+            </table>
+            <table id="car-total">
+                <tfoot><td style="width:350px">总计：</td><td id="all-total">{{ allTotal }}<td><td>元</td></tfoot>
+            </table>
+            <table>
+            	<thead><td>备注</td></thead>
+            	<tr><td><textarea name="note1"></textarea></td></tr>
+            </table>
+        </div>
+        <form name="contact_info" action="{{ url_for('contact_info')}}" method="post">
+        <div id="personal-info">
+        	<table id="car-basic-info">
+            	<thead><td>联系方式</td></thead>
+            	<tr><td>姓名</td><td><input name="name"></td></tr>
+                <tr><td>手机号码</td><td><input name="tel"></td></tr>
+                <tr><td>Email</td><td><input name="email"></td></tr>
+            </table>
+            
+            <table>
+            	<thead><td>备注：</td></thead>
+            	<tr><td><textarea name="note2"></textarea></td></tr>
+            </table>
+        </div>
+        <div id="div-button">
+        	<div id="back-to-index">
+        		<a onclick="window.location.href = $SCRIPT_ROOT + '/';"><p>放弃定制，返回主页</p></a>
+        	</div>
+        	<div id="back-step">
+                <a><p>返回，重新定制</p></a>
+        	</div>
+        	<a><div id="diy-button-big" class="button">
+                <p>OK，订单正确！</p>
+        	</div></a>
+        </div>
+        
+    	</form>
+    </div>
+</div>
+
+</body>
+</html>
